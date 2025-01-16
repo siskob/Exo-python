@@ -15,6 +15,7 @@ def jeu_de_nbre_mystere():
 		
 		elif int(choix) == nbre_aleatoire :
 			print("Félicitation vous avez devinez juste 🎉🎉🎉")
+			break
 			
 		
 		elif int(choix) < nbre_aleatoire:
@@ -23,7 +24,7 @@ def jeu_de_nbre_mystere():
 			print(f"Le nombre mystère est plus petit que {choix}")
 		essaie_restant -= 1
 		
-	if essaie_restant == 0 :
+	if essaie_restant == 0 and int(choix) != nbre_aleatoire :
 		print(f"Dommage ! Vous avez épuisez toutes vos chances. Le nombre mstère était : {nbre_aleatoire}")
 	print("Merci de votre participation")
 
