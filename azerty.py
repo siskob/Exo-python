@@ -1,3 +1,0 @@
-print("Alienwaress")
-print("azertyuiojh")
-  
