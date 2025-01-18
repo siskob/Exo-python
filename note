@@ -1,0 +1,20 @@
+# from pathlib import Path
+# path = Path("/Users/tbibh/main.py")
+# path.parent pour récupérer le dossier parent /Users/tbibh
+# path.suffix (pour .py)
+#Path.home() : dossier utilisateur
+#Path.cwd(): dossier de travail actuel
+#Concactenation en dessous:
+#p=Path.home(), p / "Document" /"main.py" ou p.joinpath("Documents", "main.py")
+#(p / "Document" /"main.py").suffix
+#Les principale infos qu'on peut recuperer sur un objet de type path :
+#p= Path("/Users/tbibh/Documents/index.html")
+#print(p.name) : index.html
+#print(p.parent) : le parent
+#print(p.stem) : index
+#print(p.suffix) : html
+#print(p.suffixes) : toutes les extensions sous forme de liste
+#print(p.parts) : Toutes les parties
+#print(p.exists()) : si le fichier existe
+#print(p.is_dir()), print(p.is_file())  : s'il s'agit d'un dossier ou d'un fichier
+#print(dir(p)) : Tout ce qui est dispo sur l'objet p
