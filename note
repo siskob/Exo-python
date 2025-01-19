@@ -18,3 +18,46 @@
 #print(p.exists()) : si le fichier existe
 #print(p.is_dir()), print(p.is_file())  : s'il s'agit d'un dossier ou d'un fichier
 #print(dir(p)) : Tout ce qui est dispo sur l'objet p
+#p= p / "Dossiertest", p.mkdir(exist_ok = True) : création de Dosiertest
+#p.mkdir(parents = True) : plusieurs dossiers les uns dans les autres, même s'ils n'existaient pas.
+#p.touch(), p.unlink() : creer et supprimer un fichier
+#p.rmdir() : suppression dossier vide
+#import shutil, shutil.rmtree(p)
+#p.write_text("Bonjour"), p.read_text() : Ecrire et lire dans le fichier.
+#[f for f in Path.home().iterdir() if f.is_dir()] : afficher les chemins si c'est un dossier (interdir()=itérable)
+#for f in p.rglob("*.png"): print(f.name) ; Rechercher les .png dans les dossiers et sous dossiers.
+#p.parent / (p.stem + "-lowres" + p.suffix)
+
+"""Trier les fichiers en fonctions de l'extension
+form pathlib import Path
+
+dirs = {".png": "Image",
+        ".jpeg": "Image",
+        "jpg" : "Image",
+        ".gif" : "Image",
+        ".mp4" : "Video"}
+
+tri_dir = Path.home() / "Tri"
+files = [f for f in tri_dir.iterdir() if f.is_file()]
+for f in files : 
+    output_dir = tri_dir / dirs.get(f.suffix, "Autres")
+    output_dir.mkdir(exist_ok=True)
+    f.rename(output_dir / f.name) : deplacer vers le dossier correspondant
+
+"""
+"""
+ import os
+
+SOURCE_FILE = os.path.realpath(__file__)
+SOURCE_DIR = os.path.dirname(SOURCE_FILE)
+ROOT_DIR = os.path.dirname(SOURCE_DIR) 
+DATA_DIR = os.path.join(SOURCE_DIR, "DATA") 
+
+from pathlib impor Path
+
+SOURCE_FILE = Path(__file__).resolve()
+SOURCE_DIR = SOURCE_FILE.parent
+ROOT_DIR = SOURCE_DIR.parent 
+DATA_DIR = SOURCE_DIR / "DATA" 
+
+"""
