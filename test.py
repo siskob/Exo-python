@@ -1,5 +1,10 @@
-chemin = r"C:\Users\bsissoko\Documents\Exo-python\JSON\fichier_texte"
+films = { "Le Seigneur des Anneaux" : 12,
+         "Harry Potter" : 9,
+         "Blade Runner" : 7.5
+}
 
-f = open(chemin, "r")
+prix = 0
+# for key in films:
 
-print(f)
+#     prix += films[key]
+print(films)
