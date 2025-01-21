@@ -1,10 +1,6 @@
-films = { "Le Seigneur des Anneaux" : 12,
-         "Harry Potter" : 9,
-         "Blade Runner" : 7.5
-}
+dictionnaire = {"prenom": "Paul", 
+                "possession": "Ingénieur", 
+                "ville": "Paris"}
 
-prix = 0
-# for key in films:
-
-#     prix += films[key]
-print(films)
+for cle, valeur in dictionnaire.items() :
+    print(cle, valeur)
