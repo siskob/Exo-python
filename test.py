@@ -1,10 +1,30 @@
-films = { "Le Seigneur des Anneaux" : 12,
-         "Harry Potter" : 9,
-         "Blade Runner" : 7.5
+from pathlib import Path
+
+
+tri_dir = {
+            "mp3" : "Musique",
+            "wav" : "Musique",
+            "flac" : "Musique",
+            "avi" : "Videos",
+            "mp4" : "Videos",
+            "gif" : "Videos",
+            "bmp" : "Images",
+            "png" : "Images",
+            "jpg" : "Images",
+            "txt" : "Documents",
+            "pptx" : "Documents",
+            "csv" : "Documents",
+            "xls" : "Documents",
+            "odp" : "Documents",
+            "pages" : "Documents"
 }
 
-prix = 0
-# for key in films:
+chemin = Path.home()
 
-#     prix += films[key]
-print(films)
+
+files = [f for f in chemin.iterdir() if f.is_file()]
+
+for f in files : 
+    final = chemin / tri_dir.get(f.suffix, "Divers")
+    final.mkdir(exist_ok=True)
+    f.rename(final / f.name)
