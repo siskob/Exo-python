@@ -61,3 +61,22 @@ ROOT_DIR = SOURCE_DIR.parent
 DATA_DIR = SOURCE_DIR / "DATA" 
 
 """
+"""
+Gestion d'erreur
+LBYL : Look Before You Leap : Regarde avant de sauter
+EAFP : it's Easier to Ask for Forgiveness than Permission : Il est plus facile de demander pardon que de demanader la permission
+
+a = 5
+b = 10
+
+try :
+    resultat = a/b
+except ZeroDivisionError:
+    print("Division par zéro impossible")
+except TypeError:
+    print("La variable b n'est pas du bon type")
+except NameError as e:
+    print("Erreur : ", e)
+else: # finally : il sera toujours exéctué peu importe l'erreur
+    print(resultat) 
+"""
