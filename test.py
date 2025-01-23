@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-dictionnaire = {"prenom": "Paul", 
-                "possession": "Ingénieur", 
-                "ville": "Paris"}
-
-for cle, valeur in dictionnaire.items() :
-    print(cle, valeur)
-=======
 from pathlib import Path
 
 
@@ -36,4 +28,3 @@ for f in files :
     final = chemin / tri_dir.get(f.suffix, "Divers")
     final.mkdir(exist_ok=True)
     f.rename(final / f.name)
->>>>>>> 97a10c13642e053c97fc59e872ec881b3a686dc8
