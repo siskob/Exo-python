@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from pathlib import Path
 
 
@@ -28,3 +29,5 @@ for f in files :
     final = chemin / tri_dir.get(f.suffix, "Divers")
     final.mkdir(exist_ok=True)
     f.rename(final / f.name)
+=======
+>>>>>>> 3ea4228bc8653afaa50cccb2a5cbf33304d4116c
