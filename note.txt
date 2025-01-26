@@ -80,3 +80,119 @@ except NameError as e:
 else: # finally : il sera toujours exéctué peu importe l'erreur
     print(resultat) 
 """
+"""Les fonctions
+Fonctions sans valeur retour : print; ajouter utilisateur à la base de donnée
+Fonctions avec valeur retour : type; récupérer l'email d'un utilisateur
+
+def nom_de_la fonction():
+    print("Je suis une fonction")
+    return : arrête la fonction. On plus exécuté ce qui viendra après.
+
+
+def affiche(message): #message = parametre / affoche(message = "message par défaut")
+    print(message)
+
+affiche("Bonjour") # Bonjour = argument / affiche()
+
+""" On peut envoyer un nombre d'arg inférieur au nombre de parametre.
+def add(a=1, b=2, c=6):
+    return a + b + c
+ 
+add(3, 5)
+"""
+"""
+def test():
+    affiche_bonjour()
+    
+def affiche_bonjour():
+    print("Bonjour")
+
+test() #Python va lire tout ce qui est en haut sans jamais le compiler 
+"""
+print(globals())/print(locals()) # Python regarde d'abord en local puis va en global
+"""
+L'ordre des paramètres dans une fonction a son importance : vous ne pouvez pas mettre un paramètre sans valeur par défaut après un paramètre qui en a une.
+
+"""Annotation de type
+def add(a: int = 0, b:int = 5) -> int : 
+    return a + b
+
+add(2, 5)
+
+def add(a: list[int]) -> list[int] : 
+    return [1, 2, 3]
+
+add(2, 5)
+
+""" Verificateur de code (mypy)
+python3.12 -m pip install mypy
+
+python -m mypy test.py #Commande à taper. S'il y a une erreur, il nous le dit.
+test.py:4: error: Argument 1 to "add" has incompatible type "str"; expected "int"  [arg-type]
+Found 1 error in 1 file (checked 1 source file)
+
+"""Les Modules
+def addition(a, b) :
+    return a + b
+
+if __name__ == "__main__ :
+    print(addition(4, 5))
+
+import sys
+from pprint import pprint
+
+pprint(sys.path) # Pour lister les dossier dans lesquels je peux crer mes Modules
+cd C:\\Users\\sisso\\AppData\\Roaming\\Python\\Python312\\site-packages # pour m'y rendre
+touch mon_module.py # pour le creer dans le dossier
+code mon_module # Pour l'ouvrir directement dans VSCode
+sys.path.append("le lien vers un autre module qui se trouve dans un autre dossier") #Si je veux appeler le module dans mon présent module
+import module_test # j'import ce nouveau module dans mon premier module
+
+import importlib
+importlib.reloard(utils) # Pour actualiser une module
+"""
+
+"""Package : un dossier qui contient un ou plusieurs Modules
+import utils.users # pour importer le modules users
+fron utils import users : Pour importer le modules users du package utils
+__init__.py : permet qu'un dossier soit reconnu comme un package. Avec les version ancienne (<3) il fallait le mettre dans le dossier.
+            On passe par __init__ pour importer les différents modules
+
+""" Documentation string = Docstring
+Docstring de type Google
+
+Args :
+    param1 : un premier parametre
+    param2 : un autre parametre
+
+returns :
+    Description de ce qui est retourné
+"""
+ """Description de la fonction
+
+    Args:
+        nom (str): Le nom de l'utilisateur
+        age (int): L'âge de l'utilisateur
+    Returns :
+        list : Liste de nombres
+"""
+
+"""Le module logging
+import logging
+
+logging.basicConfig(level = logging.DEBUG, # Permet de spécifier le niveau à partir duquel je souhaite afficher
+                    filename = "C:\Users\sisso\Documents\Exo-python\Mes_Modules\app.log"
+                    filemode = "w"
+                    format= '%(asctime)s - %(levelname)s - %(message)s')
+
+logging.debug("La fonction a bien été exécutée")
+logging.info("Message d'info générale")
+logging.warning("Attention ! ")
+logging.error("Un erreur est arrivée")
+logging.critical("Erreur critique")
+"""
+
+"""pip : toujours lancer VSCode ou Git Bash en tant que Admin avant de faire une installation avec pip
+pip3.12 # pour lancer pip
+py -3.9 -m pip install requests # Autre de lancer pip 
+which python #pour avoir la version

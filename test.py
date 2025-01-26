@@ -1,31 +1,14 @@
-from pathlib import Path
+import logging
 
 
-tri_dir = {
-            "mp3" : "Musique",
-            "wav" : "Musique",
-            "flac" : "Musique",
-            "avi" : "Videos",
-            "mp4" : "Videos",
-            "gif" : "Videos",
-            "bmp" : "Images",
-            "png" : "Images",
-            "jpg" : "Images",
-            "txt" : "Documents",
-            "pptx" : "Documents",
-            "csv" : "Documents",
-            "xls" : "Documents",
-            "odp" : "Documents",
-            "pages" : "Documents"
-}
-
-chemin = Path.home()
+logging.basicConfig(level = logging.DEBUG, # Permet de spécifier le niveau à partir duquel je souhaite afficher
+                    filename = "C:\\Users\\sisso\\Documents\\Exo-python\\Mes_Modules\\app.log",
+                    filemode = "w",
+                    format= '%(asctime)s - %(levelname)s - %(message)s')
 
 
-files = [f for f in chemin.iterdir() if f.is_file()]
-
-for f in files :
-    final = chemin / tri_dir.get(f.suffix, "Divers")
-    final.mkdir(exist_ok=True)
-    f.rename(final / f.name)
-
+logging.debug("La fonction a bien été exécutée")
+logging.info("Message d'info générale")
+logging.warning("Attention ! ")
+logging.error("Un erreur est arrivée")
+logging.critical("Erreur critique")
