@@ -195,4 +195,6 @@ logging.critical("Erreur critique")
 """pip : toujours lancer VSCode ou Git Bash en tant que Admin avant de faire une installation avec pip
 pip3.12 # pour lancer pip
 py -3.9 -m pip install requests # Autre de lancer pip 
+pip install nom_du_module
+pip uninstall nom_du_module
 which python #pour avoir la version
