@@ -198,3 +198,41 @@ py -3.9 -m pip install requests # Autre de lancer pip
 pip install nom_du_module
 pip uninstall nom_du_module
 which python #pour avoir la version
+
+"""Faker : package pour générer des données aléatoire
+from faker import Faker
+
+fake = Faker()
+#faker = Faker(locale="fr_FR")
+
+print(fake.name())
+print(fake.address())
+print(fake.text())
+
+for _ in range(10):
+    print(fake.unique.random_int())
+    print(fake.unique.firs_name())
+#Les providers
+    print(fake.job())
+    print(fake.file_path(depth = 5, category = 'video'))
+    print(fake.credit_card_number(), fake.credit_card_expire(), fake.credit_card_security_code())
+    print(fake.rgb_color())
+    print(fake.hex_color())
+    print(fake.numerify(text = "%%%-%-%%%%-%%%%-%%%-##")) # %= 1-9; # = 0-9
+    print(fake.bothify(text = "Product number : ????-####")) # ?= a-z ; # = 0-9
+
+"""Env virtuel (venv)
+python -m venv env # Pour créer un envi virtuel
+#Pour activer l'Env
+cd Script
+source activate
+
+#Pour desactiver l'Env
+deactivate
+
+#Pour savoir si je suis en virtuel
+which python
+/c/Users/sisso/Documents/Exo-python/Environnement/env/Scripts/python
+pip list
+
+

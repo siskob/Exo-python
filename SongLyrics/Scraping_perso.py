@@ -1,4 +1,6 @@
+import json
 from pprint import pprint
+from collections import Counter
 
 import requests
 from bs4 import BeautifulSoup
@@ -19,16 +21,13 @@ def recuperer_paroles(urls):
         recuperer_paroles(urls)
 
     liste_de_mots = []
-    for p in paroles.stripped_strings:
+    for p in paroles.stripped_strings :
         for mot_valable in p.split():
             if is_valid(mot_valable):
                 paroles_trier = mot_valable.strip(",").strip(".")
                 liste_de_mots.append(paroles_trier)
     return liste_de_mots
     
-
-recuperer_paroles("https://genius.com/Patrick-bruel-place-des-grands-hommes-lyrics")    
-
 
 def recuperer_url():
     numero_page = 1
@@ -52,5 +51,23 @@ def recuperer_url():
             break
 
     return liens
+
+def recuperer_tous_les_mots():
+    urls = recuperer_url()
+    mots = []
+    for url in urls:
+        mots.extend(recuperer_paroles(urls=url))
     
+    with open("C:\\Users\\sisso\\Documents\\Exo-python\\SongLyrics\\fichier.json", "w") as f : 
+        json.dump(mots, f, indent=4)
+
+    # with open("C:\\Users\\sisso\\Documents\\Exo-python\\SongLyrics\\fichier.json", "r") as f : 
+    #     mots = json.load(f)
+
+    
+    compter = Counter(w for w in mots if len(w)>5 )
+    plus_communs = compter.most_common(15)
+    pprint(plus_communs)
+
+recuperer_tous_les_mots()
 
