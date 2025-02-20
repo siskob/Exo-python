@@ -1,8 +1,10 @@
-from faker import Faker
+from datetime import datetime, timedelta
 
-fake = Faker(locale="fr_FR")
+timedelta(days=20)
+now = datetime.now()
 
-for _ in range(10):
-    print(fake.numerify(text = "%%%-%-%%%%-%%%%-%%%-##")) # %= 1-9; # = 0-9
-    print(fake.bothify(text = "Product number : ????-####")) # ?= a-z ; # = 0-9
-    print("hello") 
+now_in_15_days_minus_5_hours = now + timedelta(days=15, hours=-5)
+
+print(now)
+print(now_in_15_days_minus_5_hours)
+

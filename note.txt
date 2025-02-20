@@ -235,4 +235,32 @@ which python
 /c/Users/sisso/Documents/Exo-python/Environnement/env/Scripts/python
 pip list
 
+"""Les classes date, time, datetime
+from datetime import date, time, datetime 
+ 
+print(date(year=2025, month=2, day=20)) #Pour la date du jour
 
+print(time(hour=14, minute=30, second=20))#Pour l'heure
+print(datetime.now()) # Récupérer la date et l'heure précise
+print(datetime.today()) # Récupérer la date et l'heure précise
+print(date.today()) #Pour la date du jour
+
+#On ne peut pas utiliser now() sur un objet date ou time, ni today() sur un objet time.
+
+now = datetime.now()
+print(now.hour) # Pour récupérer l'heure actuelle
+
+#Récupérer la date de demain
+today = date.today()
+tomorrow = today.replace(day = today.day + 1)
+print(tomorrow)
+
+YYYY-MM-DD #La norme
+
+# Convertir une chaine de carctère en format date et inversement ---  site : strftime
+# strftime = string from time - Convertir date en texte /strptime = string parse time - Convertir texte en date
+print(datetime.strptime("20 Feb 2025", "%d %b %Y"))
+now = datetime.now()
+print(now.strftime("%d %b %Y"))
+
+print(dateparser.parse("il y a un mois")) #Très puissant
