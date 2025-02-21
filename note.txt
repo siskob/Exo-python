@@ -235,7 +235,8 @@ which python
 /c/Users/sisso/Documents/Exo-python/Environnement/env/Scripts/python
 pip list
 
-"""Les classes date, time, datetime
+"""""""""""""   Les classes date, time, datetime   """"""""""""""""
+
 from datetime import date, time, datetime 
  
 print(date(year=2025, month=2, day=20)) #Pour la date du jour
@@ -264,3 +265,56 @@ now = datetime.now()
 print(now.strftime("%d %b %Y"))
 
 print(dateparser.parse("il y a un mois")) #Très puissant
+
+
+#Pour gérer les fuseaux horaires / site : https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+from zoneinfo import ZoneInfo 
+
+now = datetime.now()
+
+#Pour vérifier si une date à un fuseau horaire
+now.tzinfo #on va avoir 'None' car on récupère rien (FH Naîve)
+
+now_in_paris = datetime.now(tz=ZoneInfo("Europe/Paris")) #(FH Aware) / Pour créer un fuseau horaire
+print(now_in_paris)
+
+#Ajout de fuseau horaire de Paris à CI
+now_in_ci = now_in_paris.astimezone(ZoneInfo("Europe/Paris"))
+print(now_in_ci)
+
+
+print(now_in_ci.tzinfo) # resultat = Europe/Paris
+
+#from datetime import timedelta = durée dans le temps
+#Pour gérer les passage d'heure d'hiver et d'été
+# 1-La mauvaise méthode
+montreal_tz = ZoneInfo("America/Montreal")
+march_7 = datetime(2020, 3, 7, 13, 0, 0, tzinfo=montreal_tz)
+print(march_7.tzname()) # Nom du FH d'une date 
+
+march_8 = march_7 + timedelta(days=1)
+print(march_8)
+
+# 1-La bonne méthode
+montreal_tz = ZoneInfo("America/Montreal")
+march_7 = datetime(2020, 3, 7, 13, 0, 0)
+march_7_utc = march_7.astimezone(ZoneInfo("UTC")) #Conversion en UTC
+
+march_8 = march_7_utc + timedelta(days=1)
+march_8 = march_8.astimezone(montreal_tz)
+print(march_8) 
+
+"""timedelta
+timedelta(days=20)
+now = datetime.now()
+
+now_in_15_days_minus_5_hours = now + timedelta(days=15, hours=-5)
+
+print(now)
+print(now_in_15_days_minus_5_hours)
+
+#On n'a pas months avec timedelta. Obligé d'augmenter les jours pour y arriver. Pour corriger :
+from dateutil.relativedelta import relativedelta
+
+now = datetime.now()
+now_in_2_months = now + relativedelta(months=2)

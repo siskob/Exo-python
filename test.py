@@ -1,10 +1,14 @@
-from datetime import datetime, timedelta
+class Voiture:
+    marque = "Lamborghini"
+    
 
-timedelta(days=20)
-now = datetime.now()
+voiture_01 = Voiture()
+voiture_02 = Voiture()
 
-now_in_15_days_minus_5_hours = now + timedelta(days=15, hours=-5)
+print(voiture_01.marque)
 
-print(now)
-print(now_in_15_days_minus_5_hours)
+voiture_01.marque ="Peugeolt"
+voiture_02.marque = "Volkswagen"
 
+print(voiture_01.marque)
+print(voiture_02.marque)
